@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import getLoginCode from "../api/services/login/get-login-code";
+import sendLoginCode from "../api/services/login/send-login-code";
 
 export default function LoginPage() {
   const [phone, setPhone] = useState("");
@@ -30,8 +30,8 @@ export default function LoginPage() {
     0
   );
 
-  const handleGetLoginCode = async () => {
-    await getLoginCode(phone);
+  const handleSendLoginCode = async () => {
+    await sendLoginCode(phone);
     const now = new Date();
     const lockTime = new Date(now.getTime() + 60 * 1000);
     setLock(lockTime);
@@ -68,8 +68,9 @@ export default function LoginPage() {
                   endAdornment: (
                     <InputAdornment position="end">
                       <Button
+                        id="send-login-code"
                         disabled={lockSec > 0}
-                        onClick={handleGetLoginCode}
+                        onClick={handleSendLoginCode}
                       >
                         获取验证码{lockSec > 0 && <span>（{lockSec}）</span>}
                       </Button>

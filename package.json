@@ -23,6 +23,7 @@
     "react-dom": "19.0.0-rc-380f5d67-20241113"
   },
   "devDependencies": {
+    "@playwright/test": "^1.49.0",
     "@types/node": "^20",
     "@types/pg": "^8.11.10",
     "@types/react": "^18",
